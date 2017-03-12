@@ -1,4 +1,4 @@
-'use strict'
+ 'use strict'
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -16,7 +16,7 @@ var conversation = watson.conversation({
   version_date: '2016-09-20'
 })
 
- 
+
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -60,7 +60,7 @@ function sendTextMessage(sender, text) {
     })
 }
 
-var context = {};  
+var context = {};
 
 //For a api endpoint
 app.post('/webhook/', function (req, res) {
@@ -70,10 +70,10 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            
+            sendTextMessage(sender,text)
 
 
-            conversation.message({
+            /*conversation.message({
                 workspace_id: process.env.WATSON_WORKSPACE_ID ,
                 input: {'text': text },
                 context: context
@@ -82,15 +82,15 @@ app.post('/webhook/', function (req, res) {
                  console.log('error:', err);
                 else
                 {
-                    response.output.text.forEach(function(text) { sendTextMessage(sender, text) }) 
+                    response.output.text.forEach(function(text) { sendTextMessage(sender, text) })
                     context = response.context;
                     context.dialog_turn_counter += 1
                     context.dialog_request_counter += 1
                     //console.log('sent')
                 }
-            })
+            })*/
 
-            
+
         }
     }
     res.sendStatus(200)
