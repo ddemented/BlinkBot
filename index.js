@@ -5,8 +5,8 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-const token = process.env.FB_PAGE_ACCESS_TOKEN
-
+const token = "EAAHZBrevobQ4BAKaRNBQzZAwiiugQCBv7FMYpRwuboArWjABe9vmzBfGbXzZBn7nSswYp7QtQjSqLVIsVuQxZCek7NcXynRbfZCqGR0ZB6gtfZC5dqZCf03phpfJqZBDtgej9n0c2VM19ljIbZA82PvYYtMWXBZBeZBjDZA61vOJZAZCIB9SQZDZD"
+/*
 var watson = require('watson-developer-cloud');
 
 var conversation = watson.conversation({
@@ -15,7 +15,7 @@ var conversation = watson.conversation({
   version: 'v1',
   version_date: '2016-09-20'
 })
-
+*/
 
 
 app.set('port', (process.env.PORT || 5000))
@@ -40,6 +40,7 @@ app.get('/webhook/', function (req, res) {
     }
     res.send('Error, wrong token')
 })
+
 
 function sendTextMessage(sender, text) {
     let messageData = { text:text }
